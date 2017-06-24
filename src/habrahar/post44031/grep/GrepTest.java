@@ -1,6 +1,5 @@
-package habrahar.post44031;
+package habrahar.post44031.grep;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class GrepTest {

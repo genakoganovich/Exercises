@@ -1,4 +1,4 @@
-package habrahar.post44031;
+package habrahar.post44031.grep;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -11,16 +11,16 @@ class Grep {
     private ArrayList<String> lines;
 
     Grep() {
-        inputName = "c:\\Users\\gennady\\IdeaProjects\\Exercises\\src\\habrahar\\post44031\\input.txt";
-        outputName = "c:\\Users\\gennady\\IdeaProjects\\Exercises\\src\\habrahar\\post44031\\output.txt";
-        outputResultName = "c:\\Users\\gennady\\IdeaProjects\\Exercises\\src\\habrahar\\post44031\\outputResult.txt";
-        sample = "a";
+        inputName = "c:\\Users\\gennady\\IdeaProjects\\Exercises\\src\\habrahar\\post44031\\grep\\input.txt";
+        outputName = "c:\\Users\\gennady\\IdeaProjects\\Exercises\\src\\habrahar\\post44031\\grep\\output.txt";
+        outputResultName = "c:\\Users\\gennady\\IdeaProjects\\Exercises\\src\\habrahar\\post44031\\grep\\outputResult.txt";
+        sample = "A";
         lines = new ArrayList<>();
     }
     private void doGrep() throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(new File(outputResultName)));
         for (String str: lines) {
-            if(str.contains(sample)) {
+            if(str.toLowerCase().contains(sample.toLowerCase())) {
                 bufferedWriter.write(str + " contains " + sample + "\r\n");
             }
         }
