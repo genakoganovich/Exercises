@@ -3,6 +3,15 @@ package habrahar.post44031.sort;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+class LengthComparator implements Comparator<String> {
+    @Override
+    public int compare(String o1, String o2) {
+        return o1.length() - o2.length();
+    }
+}
 
 class Sort {
     private String inputName = "c:\\Users\\gennady\\IdeaProjects\\Exercises\\src\\habrahar\\post44031\\sort\\input.txt";
@@ -23,7 +32,8 @@ class Sort {
         bufferedReader.close();
     }
     private void sort() {
-        Collections.sort(lines);
+        //Collections.sort(lines);
+        lines.sort(new LengthComparator());
     }
     private void writeOutput() throws IOException {
         File outputFile = new File(outputName);
