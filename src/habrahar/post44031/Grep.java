@@ -1,14 +1,20 @@
 package habrahar.post44031;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.util.ArrayList;
 
 class Grep {
-    private String sample = "a";
-    private String[] lines;
+    private String inputName;
+    private String outputName;
+    private String sample;
+    private ArrayList<String> lines;
 
+    Grep() {
+        inputName = "c:\\Users\\gennady\\IdeaProjects\\Exercises\\src\\habrahar\\post44031\\input.txt";
+        outputName = "c:\\Users\\gennady\\IdeaProjects\\Exercises\\src\\habrahar\\post44031\\output.txt";
+        sample = "a";
+        lines = new ArrayList<>();
+    }
     private void doGrep() {
         for (String str: lines) {
             if(str.contains(sample)) {
@@ -16,18 +22,22 @@ class Grep {
             }
         }
     }
-    private void readInput() {
-        /*String input = "line1: a" + "\n" + "line2: b" + "\n" + "line3: c";
-        System.out.println(input);
+    private void readInput() throws IOException {
+        File file = new File(inputName);
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 
-        lines = input.split("\n");
-        for(String str: lines) {
-            System.out.println(str);
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            lines.add(line);
         }
-        System.out.println("size: " + lines.length);*/
-        File file = new File("input.txt");
+        bufferedReader.close();
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(new File(outputName)));
+        for (String str: lines) {
+            bufferedWriter.write(str + "\r\n");
+        }
+        bufferedWriter.close();
     }
-    void  run() {
+    void  run() throws IOException {
         readInput();
         doGrep();
     }
