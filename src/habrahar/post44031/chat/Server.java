@@ -19,7 +19,9 @@ public class Server {
 
         String line;
         while (true) {
+            System.out.println("before read");
             line = in.readUTF();
+            System.out.println("after read");
             System.out.println(line);
             //out.writeUTF(line);
             //out.flush();
